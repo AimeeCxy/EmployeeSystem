@@ -1,0 +1,144 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<base href="<%=basePath%>"/>
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="js/jquery-2.1.4.js"></script>
+
+<script type="text/javascript">
+$(function(){	
+	//导航切换
+	$(".menuson li").click(function(){
+		$(".menuson li.active").removeClass("active");
+		$(this).addClass("active");
+	});
+	
+	$('.title').click(function(){
+		var $ul = $(this).next('ul');
+		$('dd').find('ul').slideUp();
+		if($ul.is(':visible')){
+			$(this).next('ul').slideUp();
+		}else{
+			$(this).next('ul').slideDown();
+		}
+	});
+});
+</script>
+
+
+</head>
+
+<body style="background:url(images/menu.jpg);">
+	<div size="10" class="lefttop"><span></span>菜单</div>
+    
+    <dl class="leftmenu">
+        
+    <dd>
+    <div class="title" style="text-align:center;">
+    	个人信息管理
+    </div>
+    	<ul class="menuson">
+     	<li><cite></cite><a href="selfSearchEmployees" target="rightFrame">基本信息</a><i></i></li>
+        <li><cite></cite><a href="selfSearchTraining" target="rightFrame">培训信息</a><i></i></li>
+        <li><cite></cite><a href="selfSearchRewardsAndPunishments" target="rightFrame">奖惩信息</a><i></i></li>
+        <li><cite></cite><a href="selfSearchEvaluations" target="rightFrame">考核信息</a><i></i></li>
+        <li><cite></cite><a href="selfSearchAttendances" target="rightFrame">考勤信息</a><i></i></li>
+        <li><cite></cite><a href="selfModifySearchEmployees" target="rightFrame">信息修改</a><i></i></li>
+        </ul>    
+    </dd>
+    <dd>
+    <div class="title" style="text-align:center;">
+    	员工管理
+    </div>
+    <ul class="menuson">
+        <li><cite></cite><a href="employee_add.jsp" target="rightFrame">添加员工</a><i></i></li>
+        <li><cite></cite><a href="employee_query.jsp" target="rightFrame">查询员工</a><i></i></li>
+        
+        </ul>     
+    </dd> 
+    
+    <dd><div class="title" style="text-align:center;">
+    	考勤管理
+    </div>
+    <ul class="menuson">
+        <li><cite></cite><a href="attendance_query.jsp" target="rightFrame">查询考勤</a><i></i></li>
+    </ul>    
+    </dd>  
+    
+    <dd><div class="title" style="text-align:center;">
+     	培训管理
+    </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="training_add.jsp" target="rightFrame">添加培训</a><i></i></li>
+        <li><cite></cite><a href="training_query.jsp" target="rightFrame">查询培训</a><i></i></li>
+        <li><cite></cite><a href="training_edit.jsp" target="rightFrame">编辑培训</a><i></i></li> 
+    </ul>   
+    </dd>   
+    
+    
+    <dd><div class="title" style="text-align:center;">
+     	考核管理
+    </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="evaluation_add.jsp" target="rightFrame">添加考核</a><i></i></li>
+        <li><cite></cite><a href="evaluation_query.jsp" target="rightFrame">删除考核</a><i></i></li>
+        <li><cite></cite><a href="evaluation_delete.jsp#" target="rightFrame">编辑考核</a><i></i></li> 
+    </ul>   
+    </dd>   
+    
+    <dd><div class="title" style="text-align:center;">
+     		奖惩管理
+    </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="rewardandpunishment_query.jsp" target="rightFrame">查询奖励和惩罚</a><i></i></li>
+        <li><cite></cite><a href="rewardandpunishment_add.jsp" target="rightFrame">添加奖励或惩罚</a><i></i></li>
+        <li><cite></cite><a href="rewardandpunishment_delete.jsp" target="rightFrame">删除奖励或惩罚</a><i></i></li> 
+    </ul>   
+    </dd>   
+    
+    
+    
+     <dd><div class="title" style="text-align:center;">
+     	权限管理
+     </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="authority_query.jsp" target="rightFrame">查询权限</a><i></i></li>
+        <li><cite></cite><a href="authority_manage.jsp" target="rightFrame">管理权限</a><i></i></li>
+    </ul>
+    </dd>
+    
+     <dd>
+    <div class="title" style="text-align:center;">
+    	角色管理
+    <br /></div>
+    <ul class="menuson">
+     <li><cite></cite><a href="role_query.jsp" target="rightFrame">查询角色</a><i></i></li>
+        <li><cite></cite><a href="role_add.jsp" target="rightFrame">添加角色</a><i></i></li>
+        <li><cite></cite><a href="role_delete.jsp" target="rightFrame">删除角色</a><i></i></li>
+        <li><cite></cite><a href="role_edit.jsp"target="rightFrame">编辑角色</a><i></i></li>
+        </ul>     
+    </dd> 
+    
+    
+      <dd>
+    <div class="title" style="text-align:center;">
+    	账户设置
+    </div>
+    <ul class="menuson">
+       <li><cite></cite><a href="password_edit.jsp" target="rightFrame">修改密码</a><i></i></li>
+        </ul>     
+    </dd>     
+    
+    </dl>
+    
+</body>
+</html>
+ 

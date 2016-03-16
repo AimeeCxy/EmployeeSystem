@@ -1,0 +1,60 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <base href="<%=basePath%>">
+    <style>
+body {
+	background: url(images/employee_add.jpg);
+	background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: fixed;
+font-family: Helvetica;
+}
+</style>
+    
+    <title>员工修改个人基本信息</title>
+    
+  </head>
+  
+  <body>
+    <div class="place"> 
+    <font color='red' size='4' face='微软雅黑'>位置：</font>
+    <a href="#">首页</a>
+  	<a href="main_user.jsp">个人信息管理</a>
+    <a href="selfModifySearchEmployees">信息修改</a>
+    </div><br/>
+    
+    <%
+  	List<Map<String,Object>> list = (List<Map<String,Object>>)request.getAttribute("list");
+  	Map<String,Object> map = list.get(0);
+  	%>
+  	<form action="<%=path %>/selfModifyEmployees" method ="post" name="form" onsubmit="return check()">
+     <table border="1" width="1000px" bordercolor="#C1FFC1" cellpadding="10px" cellspacing="0px" >
+     	<tr><td colspan="4" valign="middle" align="center">员工基本信息</td></tr>
+   	   	<tr>
+           <td><label>ID</label></td><td><%=map.get("EmployeeID") %></td>
+        </tr>
+        <tr>
+           <td><label>姓名</label></td><td><%=map.get("EmployeeName") %></td>
+        </tr>
+ 		<tr>
+           <td><label>电话</label></td><td><input name="tel" type="text" value=<%=map.get("Phone") %>></td>
+        </tr>
+        <tr>
+           <td><label>密码</label></td><td><input name="passwd" type="text" value="******"></td>
+        </tr>
+        <tr>
+   			<td valign="middle" align="center"><input type="submit" value="修改"/></td>
+    		<td valign="middle" align="center"><input type="button" value="取消" onclick="window.location.href='main_user.jsp'"></td>
+    	</tr>
+    </table>
+    </form>
+  </body>
+</html>
